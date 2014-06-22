@@ -1,7 +1,5 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+## makeCacheMatrix returns a list based on an square matrix that holds 4 items.
+## points to the solve R function that is used to compute the invesr of a square matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -19,17 +17,18 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## function return the inverse of a square matrix based on a list that is return by the MakeCacheMatrix function on any square matrix.
+## If the function is called a second time with the same input it will return the inverse from the cache instead of computing it again.
 
 cacheSolve <- function(x, ...) {
-         m <- x$getinv()
-        if(!is.null(m)) {
+         inv_x <- x$getinv()
+        if(!is.null(inv_x)) {
                 message("getting cached data")
-                return(m)
+                return(inv_x)
         }
         data <- x$get()
-        m <- solve(data, ...)
-        x$setinv(m)
-        m
+        inv_x <- solve(data, ...)
+        x$setinv(inv_x)
+        inv_x
        ## Return a matrix that is the inverse of 'x'
 }
